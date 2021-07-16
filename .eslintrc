@@ -1,0 +1,20 @@
+{
+  "rules":{
+    "quotes": [2,"single",{ 
+      "avoidEscape": true 
+      }
+    ]
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    }
+  },
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  }
+}

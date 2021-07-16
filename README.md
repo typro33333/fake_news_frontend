@@ -18,3 +18,6 @@
 - `npm run production enviroment`
 
 ##### [You can change config webpack at file webpack.config.js]
+<a href="https://webpack.js.org/configuration/">
+    Watch more to config webpack like input,output,etc.
+</a>

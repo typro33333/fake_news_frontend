@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './header.css';
 
 const items = [
@@ -25,41 +25,29 @@ function Navagation() {
     );
 }
         
-export default class Header extends React.Component{
+export default function Header(){
 
-    constructor(props){
-        super(props);
-        this.props={
+    useEffect(()=>{
+        window.onscroll = () => {scrollFunction()};
+    },[])
 
-        }
-        this.scrollFunction = this.scrollFunction.bind(this);
-    }
-
-    componentDidMount(){
-        window.onscroll = () => {this.scrollFunction()};
-    }
-
-    scrollFunction = () => {
-        console.log(document.documentElement.scrollTop)
+    const scrollFunction = () => {
         if(document.documentElement.scrollTop > 90){
             document.getElementById('header_container').style.height = '60px';
         }else{
             document.getElementById('header_container').style.height = '90px';
         }
     }
-
-    render(){
-        return(
-            <div className="header-container" id="header_container">
-                <div className="layout-header">
-                    <div className="logo">
-                        Logo
-                    </div>
-                    <div className="navagation-item">
-                        {Navagation()}
-                    </div>
+    return(
+        <div className="header-container" id="header_container">
+            <div className="layout-header">
+                <div className="logo">
+                    Logo
+                </div>
+                <div className="navagation-item">
+                    {Navagation()}
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }

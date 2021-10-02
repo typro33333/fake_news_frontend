@@ -1,5 +1,4 @@
-import React,{useEffect,useState} from "react";
-import {useHistory} from 'react-router-dom';
+import React from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Header from '../../components/header/header';
@@ -8,14 +7,7 @@ import Docker_image from '../../image/docker-cover.png'
 
 export default class Introduction extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.props ={
-
-        }
-    }
-
-    componentDidCatch(){
+    componentDidMount(){
         AOS.init();
     }
 
@@ -72,22 +64,22 @@ export default class Introduction extends React.Component{
                                     <div className="con-profile" data-aos-delay="100" data-aos-duration="1200" data-aos-offset="400" data-aos="fade-up">
                                         <div className="img-user"></div>
                                         <div className="info-user">
-                                            <p className="text-name-info-user"><span className="highlight-color">Ds.</span> Lê Kim Hùng</p>
-                                            <p className="text-des-info-user">Lorem Ipsum is simply dummy text of the printing<br/> and typeset industry.</p>
+                                            <p className="text-name-info-user"><span className="highlight-color">PhD.</span> Lê Kim Hùng</p>
+                                            <p className="text-des-info-user">Lorem Ipsum is simply dummy text of the <br/> printing and typeset industry.</p>
                                         </div>
                                     </div>
                                     <div className="con-profile" data-aos-delay="300" data-aos-duration="1200" data-aos-offset="400" data-aos="fade-up">
                                         <div className="img-user"></div>
                                         <div className="info-user">
-                                            <p className="text-name-info-user"><span className="highlight-color">Ds.</span> Lê Kim Hùng</p>
-                                            <p className="text-des-info-user">Lorem Ipsum is simply dummy text of the printing<br/> and typeset industry.</p>
+                                            <p className="text-name-info-user"><span className="highlight-color">PhD.</span> Lê Kim Hùng</p>
+                                            <p className="text-des-info-user">Lorem Ipsum is simply dummy text of the <br/> printing and typeset industry.</p>
                                         </div>
                                     </div>
                                     <div className="con-profile" data-aos-delay="500" data-aos-duration="1200" data-aos-offset="400" data-aos="fade-up">
                                         <div className="img-user"></div>
                                         <div className="info-user">
-                                            <p className="text-name-info-user"><span className="highlight-color">Ds.</span> Lê Kim Hùng</p>
-                                            <p className="text-des-info-user">Lorem Ipsum is simply dummy text of the printing<br/> and typeset industry.</p>
+                                            <p className="text-name-info-user"><span className="highlight-color">PhD.</span> Lê Kim Hùng</p>
+                                            <p className="text-des-info-user">Lorem Ipsum is simply dummy text of the <br/> printing and typeset industry.</p>
                                         </div>
                                     </div>
                                 </div>

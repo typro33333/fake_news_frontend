@@ -7,19 +7,44 @@ import {Data} from '../../proto/serve_pb';
 export default function Primary(){
     
     const [text,onChangetext] = useState('');
-
+    const [number,onChangenumber] = useState(6);
+    const [data,onChangedata] = useState([])
     useEffect(()=>{
-        (async () => {
-            var client = new SearchClient('0.0.0.0:8080');
-            var req = new Data();
-            req.setMessage("social media help solve the Gabby Petito case");
-            req.setResultNumber(3)
-            const metadata = {'Search-header':'SearchResult'}
-            await client.search(req,metadata,(error, result) => {
-              console.log(result)
-            })
-        })();
+
     },[])
+    console.log(data)
+
+    function format(data){
+        var array = [];
+        for(var i=0;i<data.length;i++){
+            array.push(Object.assign({},data[i]))
+        }
+        return array;
+    }
+
+    const listItem = () => {
+        if(data.length === 0){
+            return(
+                <div className="no_result">No have result, please start your search!</div>
+            )
+        }else if(data.length > 0){ 
+            const map = data.map((item,index)=>
+                <div key={index} className="box-card">
+                    <div className="content-result">
+                        <p className="highlight-color title-content">Interpretation {index+1}</p>
+                        <p style={{marginTop:'20px'}}><span className="txt-title-card-result">Title: {item['1']}</span></p>
+                        <p style={{marginTop:'8px'}}> <span className="txt-time-search">Time: {item['7']}</span></p>
+                        <p style={{marginTop:'20px'}}>Description: {item['2']}</p>
+                        <p style={{marginTop:'20px'}}> - Cording to this interpretation, the given statement seems to be <span className="txt-red">false</span></p>
+                        <p style={{marginTop:'20px'}}>{text}</p>
+                        <button className="btn-readmore" style={{marginTop:'20px',marginBottom:'20px'}}>More Detail</button>
+                    </div>
+                </div>
+            );
+            return map;
+        }
+    }
+
     return(
         <div>
             <Header/>
@@ -30,33 +55,25 @@ export default function Primary(){
                 <input className="item-search" placeholder="Search..." onChange={async(event)=>{
                     await onChangetext(event.target.value);
                 }}/>
-                <div className="btn-search">
+                <div className="btn-search" onClick={async()=>{
+                    var client = new SearchClient('http://0.0.0.0:8080');
+                    var req = new Data();
+                    req.setMessage(text);
+                    req.setResultNumber(number)
+                    const metadata = {'custom-header-1':'SearchResult'}
+                    await client.search(req,metadata,(error, result) => {
+                        onChangedata(format(result.array[0][0]))
+                    })
+                }}>
                     <p className="txt-search">Search</p>
                 </div>
             </div>
             <div className="title-result">
                 <div className="txt-result">
-                There are multiple possible interpretations for this claim.
+                There are multiple possible interpretations for this claim:
                 </div>
                 <div className="layout-card">
-                    <div className="box-card">
-                        <p>Interpretation</p>
-                        <p>Relevant tables :</p>
-                        <p>Time :</p>
-                        <p>Country :</p>
-                        <p>According to this interpretation, the given statement seems to be false</p>
-                        <p>The death rate in US is higher than in Germany</p>
-                        <button>More Detail</button>
-                    </div>
-                    <div className="box-card">
-
-                    </div>
-                    <div className="box-card">
-                    
-                    </div>
-                    <div className="box-card">
-                    
-                    </div>
+                    {listItem()}
                 </div>
             </div>
             <div className="space-100"></div>

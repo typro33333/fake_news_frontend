@@ -51,5 +51,5 @@ static_resources:
               - endpoint:
                   address:
                     socket_address:
-                      address: host.docker.internal
-                      port_value: 8082
+                      address: tstsv.ddns.net
+                      port_value: 9090

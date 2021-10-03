@@ -31,6 +31,11 @@ body{
     margin-top: 24px;
 }
 
+.space-60{
+    width: 100%;
+    margin-top: 60px;
+}
+
 .space-80{
     width: 100%;
     margin-top: 80px;

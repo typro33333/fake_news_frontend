@@ -1,10 +1,14 @@
-import React from 'react'
-import './App.css'
+import "./App.css";
+import React from "react";
+import {HashRouter as Router} from "react-router-dom";
+import Routes from "./routes/routes";
 
 export const App= () => {
-    return (
-      <div>
-        <h1>Hello React JS + Webpack</h1>
-      </div>
-    )
-}
+  return (
+  <Router
+  hashType="noslash"
+  >
+    <Routes/>
+  </Router>
+  );
+};

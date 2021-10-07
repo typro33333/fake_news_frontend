@@ -1,12 +1,13 @@
 {
   "name": "test-2",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/questions) <a href=\"https://www.npmjs.org/package/react-native\"> <img src=\"https://badge.fury.io/js/react-native.svg\" alt=\"Current npm package version.\" /> <img src=\"https://raw.githubusercontent.com/webpack-contrib/awesome-webpack/master/media/awesome_webpack_branding.png\" alt=\"Webpack logo.\" /> </a> ## [ReactJS] + [WebPack]",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve --open",
-    "build": "webpack --mode production --watch"
+    "build": "webpack --config webpack.prod.js --watch",
+    "watch": "webpack --watch --config webpack.dev.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,18 +18,23 @@
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "compression-webpack-plugin": "^9.0.0",
     "css-loader": "^6.0.0",
     "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.1.0",
+    "mocha-eslint": "^7.0.0",
     "prettier": "^2.3.2",
     "react-dev-utils": "^11.0.4",
     "style-loader": "^3.1.0",
@@ -38,7 +44,10 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.3.0",
+    "webpack-merge": "^5.8.0"
   }
 }

@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch, Redirect} from "react-router-dom";
 
+import RouteWithLayout from "./route_layout";
 import Layout from "../layout/layout";
 
 import Home from "@page/home/home";
 import SecondPage from "@page/search/second";
-import RouteWithLayout from "./route_layout";
 
 export default function Routes(){
     return(

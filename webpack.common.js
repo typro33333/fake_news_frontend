@@ -3,7 +3,7 @@ const HtmlPlugin = require("html-webpack-plugin"); //Đóng gói file html
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin"); // Phân biệt file viết hoa
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); //Đóng gói file css
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-//const {BundleAnalyzerPlugin} =require("webpack-bundle-analyzer"); //Sau khi bundle sẽ hiển thị thống kê file (mb)
+const {BundleAnalyzerPlugin} =require("webpack-bundle-analyzer"); //Sau khi bundle sẽ hiển thị thống kê file (mb)
 const CompressionPlugin = require("compression-webpack-plugin");
 const TesterPlugin = require("terser-webpack-plugin");
 
@@ -25,7 +25,7 @@ module.exports = {
     minimizer:[ new TesterPlugin({
       terserOptions:{
         compress:{
-          drop_console:true
+          drop_console:true,
         }
       }
     })]
@@ -62,7 +62,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@component": path.resolve(__dirname, "./src/components/"),
+      "@components": path.resolve(__dirname, "./src/components/"),
       "@page": path.resolve(__dirname,"./src/page"),
       "@image": path.resolve(__dirname,"./src/assets/images"),
       extensions: [".wasm", ".mjs", ".js", ".json"]
@@ -75,6 +75,7 @@ module.exports = {
     new CaseSensitivePathsPlugin(),
     new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
-    new CompressionPlugin()
+    new CompressionPlugin(),
+    new BundleAnalyzerPlugin()
   ],
 };

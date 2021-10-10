@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../component/header/header";
-import Footer from "../component/footer/footer";
+import Header from "@components/header/header";
+import Footer from "../components/footer/footer";
 
 export default function Layout(props){
     return(

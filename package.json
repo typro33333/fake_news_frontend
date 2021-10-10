@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack serve --open",
+    "dev": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js --watch",
-    "watch": "webpack --watch --config webpack.dev.js"
+    "watch": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +38,7 @@
     "prettier": "^2.3.2",
     "react-dev-utils": "^11.0.4",
     "style-loader": "^3.1.0",
+    "terser-webpack-plugin": "^5.2.4",
     "webpack": "^5.44.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",

@@ -8,11 +8,6 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const TesterPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  entry: {
-    bundle: {
-      import: "./src/index.js",
-    },
-  },
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "[name].[fullhash].js",
@@ -51,12 +46,23 @@ module.exports = {
         test: /\.(png|jp(e*)g|svg|gif)$/,
         use: [
             {
-                loader:"file-loader",
-                options:{
-                    name:"images/[name].[ext]"
-                }
+              loader:"url-loader",
+              options:{
+                name:"images/[name].[hash:20].[ext]",
+                limit: 8192
+              }
             }
         ],
+      },
+      {
+          // Load all icons
+          // eslint-disable-next-line no-useless-escape
+          test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+          use: [
+              {
+                  loader: "file-loader",
+              }
+          ]
       }
     ],
   },

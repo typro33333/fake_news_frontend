@@ -2,5 +2,6 @@ const {merge} = require("webpack-merge");
 const common = require("./webpack.common");
 
 module.exports = merge(common,{
-    mode:"production"
+    mode:"production",
+    entry: ["@babel/polyfill", "./src/index.js"],
 });

@@ -5,6 +5,7 @@ import "./home.css";
 import Docker_image from "../../assets/images/docker-cover.png";
 import Crawling_image from "../../assets/images/crawling.png";
 import Avatar from "../../assets/images/thinh.jpg";
+
 export default class Home extends React.Component{
 
     componentDidMount(){
@@ -29,7 +30,7 @@ export default class Home extends React.Component{
                             <div data-aos="fade-up" data-aos-delay="1000" data-aos-duration="1000" className ="container-btn-covid">
                                 <div className="btn btn-tracking" onClick={()=>{
                                     this.props.history.push({
-                                        pathname:"/primary"
+                                        pathname:"/search"
                                     });
                                 }}>
                                     <div className="box-btn">
@@ -54,7 +55,7 @@ export default class Home extends React.Component{
                 <div className="project-ower">
                     <div className="layout-project-ower">
                         <div className="con-project-ower">
-                            <div data-aos="fade-up" data-aos-duration="1000" data-aos-offset="330">
+                            <div data-aos="fade-up" data-aos-duration="1800" data-aos-offset="200">
                                 <p className="title-project-ower">Project’s <span className="highlight-color">Owners</span></p>
                                 <p className="des-project-ower">Lorem Ipsum is simply dummy text of the printing and typeset industry.<br/> Ipsum is simply dummy text.</p>
                             </div>

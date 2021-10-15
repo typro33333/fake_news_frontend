@@ -21,3 +21,8 @@
 <a href="https://webpack.js.org/configuration/">
     Watch more to config webpack like input,output,etc.
 </a>
+
+##### [Gencode proto file to JS]
+` protoc -I. ./proto/train.proto --js_out=import_style=commonjs,binary:./src --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src `
+
+` protoc -I. ./proto/serve.proto --js_out=import_style=commonjs,binary:./src --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src `

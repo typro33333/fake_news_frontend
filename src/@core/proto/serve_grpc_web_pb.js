@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for 
+ * @fileoverview gRPC-Web generated client stub for
  * @enhanceable
  * @public
  */
@@ -15,20 +15,22 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
-const proto = require('./train_pb.js');
+
+var proto_train_pb = require('./train_pb.js')
+const proto = require('./serve_pb.js');
 
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
  */
-proto.TrainClient =
+proto.SearchClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -46,15 +48,15 @@ proto.TrainClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
  */
-proto.TrainPromiseClient =
+proto.SearchPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -72,80 +74,61 @@ proto.TrainPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.InputData,
- *   !proto.StatusCode>}
+ *   !proto.Data,
+ *   !proto.SearchResult>}
  */
-const methodDescriptor_Train_Training = new grpc.web.MethodDescriptor(
-  '/Train/Training',
+const methodDescriptor_Search_Search = new grpc.web.MethodDescriptor(
+  '/Search/Search',
   grpc.web.MethodType.UNARY,
-  proto.InputData,
-  proto.StatusCode,
+  proto.Data,
+  proto.SearchResult,
   /**
-   * @param {!proto.InputData} request
+   * @param {!proto.Data} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.StatusCode.deserializeBinary
+  proto.SearchResult.deserializeBinary
 );
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.InputData,
- *   !proto.StatusCode>}
- */
-const methodInfo_Train_Training = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.StatusCode,
-  /**
-   * @param {!proto.InputData} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.StatusCode.deserializeBinary
-);
-
-
-/**
- * @param {!proto.InputData} request The
+ * @param {!proto.Data} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.StatusCode)}
+ * @param {function(?grpc.web.RpcError, ?proto.SearchResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.StatusCode>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.SearchResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.TrainClient.prototype.training =
+proto.SearchClient.prototype.search =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/Train/Training',
+      '/Search/Search',
       request,
       metadata || {},
-      methodDescriptor_Train_Training,
+      methodDescriptor_Search_Search,
       callback);
 };
 
 
 /**
- * @param {!proto.InputData} request The
+ * @param {!proto.Data} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.StatusCode>}
+ * @return {!Promise<!proto.SearchResult>}
  *     Promise that resolves to the response
  */
-proto.TrainPromiseClient.prototype.training =
+proto.SearchPromiseClient.prototype.search =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/Train/Training',
+      '/Search/Search',
       request,
       metadata || {},
-      methodDescriptor_Train_Training);
+      methodDescriptor_Search_Search);
 };
 
 

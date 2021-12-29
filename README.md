@@ -14,7 +14,7 @@
 #### [Run as develop enviroment]
 - `npm run dev`
 
-#### [Run as production enviroment]
+#### [Run build web]
 - `npm run production enviroment`
 
 ##### [You can change config webpack at file webpack.config.js]

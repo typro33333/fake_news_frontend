@@ -15,22 +15,20 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
-
-var proto_train_pb = require('../proto/train_pb.js')
-const proto = require('./serve_pb.js');
+const proto = require('./train_pb.js');
 
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
  */
-proto.SearchClient =
+proto.TrainClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -48,15 +46,15 @@ proto.SearchClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
  */
-proto.SearchPromiseClient =
+proto.TrainPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -74,80 +72,61 @@ proto.SearchPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.Data,
- *   !proto.SearchResult>}
+ *   !proto.InputData,
+ *   !proto.StatusCode>}
  */
-const methodDescriptor_Search_Search = new grpc.web.MethodDescriptor(
-  '/Search/Search',
+const methodDescriptor_Train_Training = new grpc.web.MethodDescriptor(
+  '/Train/Training',
   grpc.web.MethodType.UNARY,
-  proto.Data,
-  proto.SearchResult,
+  proto.InputData,
+  proto.StatusCode,
   /**
-   * @param {!proto.Data} request
+   * @param {!proto.InputData} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.SearchResult.deserializeBinary
+  proto.StatusCode.deserializeBinary
 );
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.Data,
- *   !proto.SearchResult>}
- */
-const methodInfo_Search_Search = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.SearchResult,
-  /**
-   * @param {!proto.Data} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.SearchResult.deserializeBinary
-);
-
-
-/**
- * @param {!proto.Data} request The
+ * @param {!proto.InputData} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.SearchResult)}
+ * @param {function(?grpc.web.RpcError, ?proto.StatusCode)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.SearchResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.StatusCode>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.SearchClient.prototype.search =
+proto.TrainClient.prototype.training =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/Search/Search',
+      '/Train/Training',
       request,
       metadata || {},
-      methodDescriptor_Search_Search,
+      methodDescriptor_Train_Training,
       callback);
 };
 
 
 /**
- * @param {!proto.Data} request The
+ * @param {!proto.InputData} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.SearchResult>}
+ * @return {!Promise<!proto.StatusCode>}
  *     Promise that resolves to the response
  */
-proto.SearchPromiseClient.prototype.search =
+proto.TrainPromiseClient.prototype.training =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/Search/Search',
+      '/Train/Training',
       request,
       metadata || {},
-      methodDescriptor_Search_Search);
+      methodDescriptor_Train_Training);
 };
 
 

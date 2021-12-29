@@ -1,14 +1,14 @@
-const {merge} = require("webpack-merge");
-const common = require("./webpack.common");
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common');
 
-module.exports = merge(common,{
-    mode:"development",
-    entry: ["@babel/polyfill", "./src/index.js"],
-    devtool: "inline-source-map",
-    devServer: {
-        port: 3000,
-        inline: true,
-        watchContentBase: true,
-        historyApiFallback: true,
-    },
+module.exports = merge(common, {
+  mode: 'development',
+  entry: ['@babel/polyfill', './src/index.js'],
+  devtool: 'inline-source-map',
+  devServer: {
+    port: 3000,
+    inline: true,
+    watchContentBase: true,
+    historyApiFallback: true,
+  },
 });

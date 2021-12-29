@@ -1,4 +1,4 @@
-.header-container{
+.header{
     width: 100%;
     height: 90px;
     background-color: white;
@@ -12,14 +12,14 @@
     z-index: 10;
 }
 
-.layout-header{
+.header__layout{
     width: 75%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo{
+.layout__logo{
     font-size: 32px;
     font-weight: 500;
     font-family: "Roboto Slab";
@@ -29,7 +29,7 @@
     cursor: pointer;
 }
 
-.list_items_nav{
+.link__list-items-nav{
     list-style: none;
     text-decoration: none;
     list-style-type: none;

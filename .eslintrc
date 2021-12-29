@@ -3,10 +3,11 @@
     "eslint:recommended"
   ],
   "rules":{
-    "quotes": [2,"double",{ 
-      "avoidEscape": true 
+    "quotes": [2,"single",{
+      "avoidEscape": true
       }
     ],
+    "indent": ["error", 2],
     "consistent-return": 2,
     "no-else-return"   : 1,
     "semi"             : [1, "always"],

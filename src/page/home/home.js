@@ -2,7 +2,9 @@ import React from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './home.css';
-import { ButtonAction } from '@core/components/atom/buttonAction/buttonAction';
+import { Space80 } from '@core/components/atom/space/space-80';
+
+// import { ButtonAction } from '@core/components/atom/buttonAction/buttonAction';
 
 // import Docker_image from '@core/assets/images/docker-cover.png';
 // import Crawling_image from '@core/assets/images/crawling.png';
@@ -15,8 +17,15 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <ButtonAction />
+      <div className='home'>
+        <Space80> </Space80>
+        <div className='home__header-content'>
+          <div className='header-content'>
+            <div className=''>
+              as
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -4,39 +4,11 @@
 
 body{
     background-color: white;
+    overflow: visible;
 }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-.test-border{
-    border: 1px solid black;
-}
-
-.space-140{
-    width: 100%;
-    margin-top: 140px;
-}
-
-.space-100{
-    width: 100%;
-    margin-top: 100px;
-}
-
-.space-24{
-    width: 100%;
-    margin-top: 24px;
-}
-
-.space-60{
-    width: 100%;
-    margin-top: 60px;
-}
-
-.space-80{
-    width: 100%;
-    margin-top: 80px;
 }

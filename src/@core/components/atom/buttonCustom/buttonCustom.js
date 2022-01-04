@@ -20,13 +20,3 @@ export const ButtonAction = (props) => {
     </Button>
   );
 };
-
-ButtonAction.defaultProps = {
-  variant: 'primary',
-  href: '#',
-  text: 'Button',
-  as: undefined,
-  type: 'button',
-  value: undefined,
-  size : undefined,
-};

@@ -45,7 +45,7 @@ export default function Header() {
     <div style={{position:'relative'}} className = {open? 'black' : ''}>
       <div className='header' id='header_container'>
         <div className='header__layout'>
-          <div className='layout__logo'>Logo</div>
+          <div className='layout__logo'>AICIT-19</div>
           <div className='layout__link'>{Navagation()}</div>
           <div className='layout__show-links'>
             <i class='bx bx-list-ul' onClick={() => {

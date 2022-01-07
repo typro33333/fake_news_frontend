@@ -7,11 +7,6 @@ import LKH from '@core/assets/images/lkh.png';
 import LTQT from '@core/assets/images/trieu.png';
 import THT from '@core/assets/images/thinh.jpg';
 import { Space120, Space140 } from '@core/components/atom/space/space';
-
-// import Docker_image from '@core/assets/images/docker-cover.png';
-// import Crawling_image from '@core/assets/images/crawling.png';
-// import Avatar from '@core/assets/images/thinh.jpg';
-
 export default class Home extends React.Component {
   componentDidMount() {
     AOS.init();

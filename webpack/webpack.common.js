@@ -9,7 +9,7 @@ const TesterPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '../dist'),
     filename: '[name].[fullhash].js',
   },
   optimization: {
@@ -70,8 +70,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@core': path.resolve(__dirname, './src/@core'),
-      '@page': path.resolve(__dirname, './src/page'),
+      '@core': path.resolve(__dirname, '../src/@core'),
+      '@page': path.resolve(__dirname, '../src/page'),
       extensions: ['.mjs', '.js', '.json'],
     },
   },

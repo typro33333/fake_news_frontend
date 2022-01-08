@@ -1,7 +1,7 @@
 #Build stage
 FROM node:13-alpine as build-stage
 WORKDIR /app
-COPY ./ ./
+COPY . .
 RUN npm install
 RUN npm run build
 

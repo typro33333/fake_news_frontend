@@ -60,11 +60,13 @@
 }
 
 .btn-documents:hover {
-  background-color: #21264b;
+  background-color: #232a55;
+  color: white;
 }
 
 .btn-tracking:hover {
-  background-color: rgb(106, 58, 0);
+  background-color: rgb(199, 109, 0);
+  color: white;
 }
 
 .bx-right-arrow-alt {

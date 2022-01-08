@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { list_navigation } from '@core/utils/db/links';
 import './header.css';
+import { Space140 } from '@core/components/atom/space/space';
 
 function Navagation() {
   const listItems = list_navigation.map((item) => (
@@ -71,6 +72,7 @@ export default function Header() {
         </div>
         <div className='navigation__cancel'></div>
       </div>
+      <Space140></Space140>
     </div>
   );
 }

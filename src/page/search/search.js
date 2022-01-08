@@ -3,10 +3,27 @@ import './search.css';
 import { SearchClient } from '@core/proto/serve_grpc_web_pb';
 import { Data } from '@core/proto/serve_pb';
 
+const metaData = [
+  'title',
+  'description',
+  'link',
+  'blog_title',
+  'blog_link',
+  'author',
+  'publish_time'
+];
+
 function format(data) {
   var array = [];
-  for (var i = 0; i < data.length; i++) {
-    array.push(Object.assign({}, data[i]));
+  var obj = {};
+  // var obj = {};
+  console.log(data[0][1]);
+  for (var i = 0; i < data[0].length; i++) {
+    for(var j = 0; j < metaData.length; j++) {
+      obj[metaData[j]] = data[0][i][j+1];
+    }
+    array.push(Object.assign({}, obj));
+    obj = {};
   }
   return array;
 }
@@ -18,12 +35,13 @@ export default class Search extends React.Component {
       text: '',
       number: 3,
       data: [],
+      percent: 0,
+      tracking: false,
     };
   }
 
   render() {
     const { text, number, data } = this.state;
-    const f = true;
     const listItem = (data) => {
       if (data.length === 0) {
         return (
@@ -51,7 +69,7 @@ export default class Search extends React.Component {
               <p style={{ marginTop: '20px' }}>
                 {' '}
                 - Cording to this interpretation, the given statement seems to
-                be <span className={f ? 'txt-green' : 'txt-red'}>True</span>
+                be <span className={this.state.tracking ? 'txt-green' : 'txt-red'}>{this.state.tracking}</span>
               </p>
               <p style={{ marginTop: '20px' }}>Query: {text}</p>
               <button
@@ -70,11 +88,11 @@ export default class Search extends React.Component {
 
     return (
       <div>
-        <div className="space-60"></div>
         <div className="title-coronacheck">
-          <span className="highlight-color">CoronaCheck</span>: Computational
+          <h1>Corona Information Tracking Computational
           Fact Checking for Statistical{' '}
           <span className="highlight-color">Coronavirus</span> Claims
+          </h1>
         </div>
         <div className="des-coronacheck">
           Verify statistical claims about the coronavirus spread and effects on
@@ -91,7 +109,8 @@ export default class Search extends React.Component {
           <div
             className="btn-search"
             onClick={async () => {
-              var client = new SearchClient('http://0.0.0.0:8080');
+              console.log('clicked');
+              var client = new SearchClient('http://backend.ttst.asia');
               var req = new Data();
               req.setMessage(text);
               req.setResultNumber(number);
@@ -100,6 +119,8 @@ export default class Search extends React.Component {
                 if (error) {
                   return 0;
                 }
+                this.setState({percent: result.array[0][1]});
+                this.setState({tracking: result.array[0][2]});
                 return this.setState({ data: format(result.array[0][0]) });
               });
             }}

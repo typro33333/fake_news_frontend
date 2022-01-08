@@ -6,7 +6,7 @@ import ImageDocker from '@core/assets/images/docker-cover.png';
 import LKH from '@core/assets/images/lkh.png';
 import LTQT from '@core/assets/images/trieu.png';
 import THT from '@core/assets/images/thinh.jpg';
-import { Space120, Space140 } from '@core/components/atom/space/space';
+import { Space120 } from '@core/components/atom/space/space';
 export default class Home extends React.Component {
   componentDidMount() {
     AOS.init();
@@ -15,7 +15,6 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className='home'>
-        <Space140></Space140>
         <div className='home__header-content'>
           <div className='header-content'>
             <div className='header-content__box-title'>
@@ -41,8 +40,11 @@ export default class Home extends React.Component {
                 <div className='btn btn-documents'>
                   <span>Documents</span> <span className='icon_arrow'><i class='bx bx-right-arrow-alt'></i></span>
                 </div>
-                <div className='btn btn-tracking'>
-                  <span>Lets Tracking</span> <span className='icon_arrow'><i class='bx bx-right-arrow-alt'></i></span>
+                <div className='btn btn-tracking' onClick={()=> this.props.history.push('/search')}>
+                  <span>Lets Tracking</span>
+                  <span className='icon_arrow'>
+                    <i class='bx bx-right-arrow-alt'></i>
+                  </span>
                 </div>
               </div>
             </div>

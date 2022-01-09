@@ -82,5 +82,15 @@ module.exports = {
     new CaseSensitivePathsPlugin(),
     new MiniCssExtractPlugin(),
     new CompressionPlugin(),
+    // {
+    //   apply: (compiler) => {
+    //     compiler.hooks.done.tap('DonePlugin', (stats) => {
+    //       console.log('Build complete !', stats);
+    //       setTimeout(() => {
+    //         process.exit(0);
+    //       });
+    //     });
+    //   }
+    // }
   ],
 };

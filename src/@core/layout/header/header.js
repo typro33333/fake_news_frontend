@@ -49,7 +49,7 @@ export default function Header() {
           <div className='layout__logo'>AICIT-19</div>
           <div className='layout__link'>{Navagation()}</div>
           <div className='layout__show-links'>
-            <i class='bx bx-list-ul' onClick={() => {
+            <i className='bx bx-list-ul' onClick={() => {
               isOpenNavigation();
             }}></i>
           </div>
@@ -62,12 +62,12 @@ export default function Header() {
       <div className='header__navigation' id='header-navigation'>
         <div className='navigation__list'>
           <div className='button__cancel'>
-            <i class='bx bx-x' onClick={() => {isCloseNavigation();}}></i>
+            <i className='bx bx-x' onClick={() => {isCloseNavigation();}}></i>
           </div>
           <ul className='list-links'>
-            <li><i class='bx bxs-bookmark'></i><a href="#">How to use</a></li>
-            <li><i class='bx bxs-file-doc' ></i><a href="#">Document</a></li>
-            <li><i class='bx bxl-github'></i><a href="#">Github</a></li>
+            <li><i className='bx bxs-bookmark'></i><a href="#">How to use</a></li>
+            <li><i className='bx bxs-file-doc' ></i><a href="#">Document</a></li>
+            <li><i className='bx bxl-github'></i><a href="#">Github</a></li>
           </ul>
         </div>
         <div className='navigation__cancel'></div>

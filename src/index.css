@@ -12,7 +12,20 @@ body{
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6{
     font-weight: 700;
     color: #030B4E;
+}
+
+p {
+    color: #030B4E;
+}
+
+:root {
+    --normal-color: #232a55;
+    --highlight-color: darkorange;
+}
+
+.highlight-color {
+    color: var(--highlight-color);
 }

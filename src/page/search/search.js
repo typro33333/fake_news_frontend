@@ -1,33 +1,8 @@
 import React from 'react';
 import './search.css';
-import { SearchClient } from '@core/proto/serve_grpc_web_pb';
-import { Data } from '@core/proto/serve_pb';
-
-const metaData = [
-  'title',
-  'description',
-  'link',
-  'blog_title',
-  'blog_link',
-  'author',
-  'publish_time'
-];
-
-function format(data) {
-  var array = [];
-  var obj = {};
-  // var obj = {};
-  console.log(data[0][1]);
-  for (var i = 0; i < data[0].length; i++) {
-    for(var j = 0; j < metaData.length; j++) {
-      obj[metaData[j]] = data[0][i][j+1];
-    }
-    array.push(Object.assign({}, obj));
-    obj = {};
-  }
-  return array;
-}
-
+import { search } from '@core/utils/api/api';
+import { Space40, Space60, Space120 } from '@core/components/atom/space/space';
+import { formatString } from '@core/utils/modules/modules';
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -50,7 +25,8 @@ export default class Search extends React.Component {
           </div>
         );
       } else if (data.length > 0) {
-        const map = data.map((item, index) => (
+        console.log(data);
+        const map = data[1].map((item, index) => (
           <div key={index} className="box-card">
             <div className="content-result">
               <p className="highlight-color title-content">
@@ -58,14 +34,14 @@ export default class Search extends React.Component {
               </p>
               <p style={{ marginTop: '20px' }}>
                 <span className="txt-title-card-result">
-                  Title: {item['1']}
+                  Title: {item['title']}
                 </span>
               </p>
               <p style={{ marginTop: '8px' }}>
                 {' '}
-                <span className="txt-time-search">Time: {item['7']}</span>
+                <span className="txt-time-search">Time: {item['publish_time']}</span>
               </p>
-              <p style={{ marginTop: '20px' }}>Description: {item['2']}</p>
+              <p style={{ marginTop: '20px' }}>Description: {formatString(item['description'])}</p>
               <p style={{ marginTop: '20px' }}>
                 {' '}
                 - Cording to this interpretation, the given statement seems to
@@ -88,53 +64,51 @@ export default class Search extends React.Component {
 
     return (
       <div>
-        <div className="title-coronacheck">
-          <h1>Corona Information Tracking Computational
-          Fact Checking for Statistical{' '}
-          <span className="highlight-color">Coronavirus</span> Claims
-          </h1>
+        <div className="search__title">
+          <div className='title__layout'>
+            <h1 className="highlight-color">Information Tracking Covid-19 </h1>
+            <h3 className='layout__sub-title'> Computational Fact Checking for Statistical
+              <span className="highlight-color"> Covid-19 </span>Claims
+            </h3>
+          </div>
         </div>
-        <div className="des-coronacheck">
+        <div className="search__description">
+          <p className='description__layout'>
           Verify statistical claims about the coronavirus spread and effects on
-          data from the <u style={{ cursor: 'pointer' }}>official sources</u>.
+          data from the <span className='description--modifile'>official sources</span>.
+          </p>
         </div>
+        <Space40></Space40>
         <div className="search">
-          <input
-            className="item-search"
-            placeholder="Search..."
-            onChange={async (event) => {
-              await this.setState({ text: event.target.value });
-            }}
-          />
-          <div
-            className="btn-search"
-            onClick={async () => {
-              console.log('clicked');
-              var client = new SearchClient('http://backend.ttst.asia');
-              var req = new Data();
-              req.setMessage(text);
-              req.setResultNumber(number);
-              const metadata = { 'custom-header-1': 'SearchResult' };
-              await client.search(req, metadata, (error, result) => {
-                if (error) {
-                  return 0;
-                }
-                this.setState({percent: result.array[0][1]});
-                this.setState({tracking: result.array[0][2]});
-                return this.setState({ data: format(result.array[0][0]) });
-              });
-            }}
-          >
-            <p className="txt-search">Search</p>
+          <div className='search__layout'>
+            <input
+              className="input-search"
+              placeholder="Sentence about covid-19"
+              onChange={async (event) => {
+                await this.setState({ text: event.target.value });
+              }}
+            />
+            <div
+              className="btn-search"
+              onClick={async() => {
+                await search(text, number).then(async res => {
+                  await this.setState({ data: res});
+                });
+              }}
+            >
+              <p className="txt-search">Tracking</p>
+            </div>
           </div>
         </div>
+        <Space60></Space60>
         <div className="title-result">
-          <div className="txt-result">
-            There are multiple possible interpretations for this claim:
-          </div>
+          <h5 className="txt-result">
+            There are multiple possible interpretations for this claim
+          </h5>
+          <Space40></Space40>
           <div className="layout-card">{listItem(data)}</div>
         </div>
-        <div className="space-100"></div>
+        <Space120></Space120>
       </div>
     );
   }

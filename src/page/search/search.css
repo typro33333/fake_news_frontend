@@ -196,6 +196,26 @@
     background-color: rgb(234, 51, 35);
 }
 
+@media only screen and (max-width: 1920px) {
+
+    .search__layout {
+        width: 53%;
+    }
+
+    .search__layout {
+        justify-content: space-between;
+    }
+
+    .input-search {
+        width: 85%;
+        font-size: 18px;
+    }
+
+    .btn-search {
+        width: 13%;
+    }
+}
+
 @media only screen and (max-width: 1440px) {
 
     .search__layout {

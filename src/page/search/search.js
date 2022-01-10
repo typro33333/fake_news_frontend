@@ -19,6 +19,10 @@ export default class Search extends React.Component {
     };
   }
 
+  componentDidMount () {
+    document.title = 'AICIT-19 | Search';
+  }
+
   render() {
     const { text, number, data, isSearch, disable } = this.state;
     const listItem = (data) => {

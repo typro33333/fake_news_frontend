@@ -1,7 +1,7 @@
 version: "3"
 services:
   envoy:
-    image: envoyproxy/envoy-dev:e4955aed5694f9935d674419dbb364e744f697b4
+    image: envoyproxy/envoy-dev:b136310d14ceb5ce66c96ac6b3b2f445aac943e7
     volumes:
       - ./envoy.yaml:/etc/envoy/envoy.yaml
     ports:

@@ -112,52 +112,17 @@
     width: 100%;
 }
 
-.box-card:first-child {
-    margin-top: 36px;
-}
-
 .box-card{
+    position: relative;
     display: flex;
     justify-content: center;
     height: auto;
     width: 20rem;
     background-color: rgb(255, 255, 255);
-    box-shadow: 1px 1px 8px rgba(33, 33, 33, 0.25);
-    position: relative;
+    box-shadow: 1px 1px 6px rgba(56, 56, 56, 0.25);;
     padding: 18px;
     margin: 18px;
-}
-
-.fillter-card{
-    margin-top: 32px;
-    margin-bottom: 32px;
-    margin-left: 40px;
-    height: 380px;
-    width: 320px;
-}
-
-.content-result{
-    font-family: 'Roboto';
-    color: #030B4E;
-}
-
-.title-content{
-    font-size: 20px;
-}
-
-.btn-readmore-search{
-    border: none;
-    background-color: #FF4D15;
-    color: white;
-    width: 120px;
-    height: 32px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.btn-readmore-search:hover{
-    background-color: #eb3b05;
+    border-radius: 8px;
 }
 
 .no_result{
@@ -169,33 +134,46 @@
     font-family: 'Roboto';
 }
 
-.txt-time-search{
-    margin-top: 8px;
-    background-color: rgb(246,195,46);
+.content__btn-link {
+    
+}
+
+.btn-link--modifile {
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.box-card__content > p{
+    margin-top: '20px';
+}
+
+.txt-time-search, .txt-title-card-result, .txt-green, .txt-red {
     border-radius: 4px;
-    padding-left:4px;
-    padding-right:4px;
+    padding: 0 4px 0 4px;
+}
+
+.txt-time-search {
+    background-color: rgb(246,195,46);
 }
 
 .txt-title-card-result{
     background-color: rgb(53, 212, 246);
-    border-radius: 4px;
-    padding-left:4px;
-    padding-right:4px;
 }
 
 .txt-green{
     background-color: rgb(54, 209, 23);
-    border-radius: 4px;
-    padding-left:4px;
-    padding-right:4px;
 }
 
 .txt-red{
     background-color: rgb(234, 51, 35);
-    border-radius: 4px;
-    padding-left:4px;
-    padding-right:4px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -236,5 +214,13 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .box-card:first-child {
+        margin-top: 36px;
+    }
+
+    .box-card:last-child {
+        margin-bottom: 36px;
     }
 }

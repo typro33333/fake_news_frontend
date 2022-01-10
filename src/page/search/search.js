@@ -25,29 +25,26 @@ export default class Search extends React.Component {
           </div>
         );
       } else if (data.length > 0) {
-        console.log(data[0][1].desition );
         const map = data[1].map((item, index) => (
           <div key={index} className="box-card">
-            <div className="content-result">
+            <div className='box-card__content'>
               <h3 className="highlight-color">
                 Interpretation {index + 1}
               </h3>
-              <p style={{ marginTop: '20px' }}>
-                <span className="txt-title-card-result">
-                  Title: {item['title']}
-                </span>
+              <p> <span className="txt-title-card-result"> Title: {item['title']} </span>
               </p>
               <p style={{ marginTop: '8px' }}>
-                {' '}
                 <span className="txt-time-search">Time: {item['publish_time']}</span>
               </p>
-              <p style={{ marginTop: '20px' }}>Description: {formatString(item['description'])}</p>
-              <p style={{ marginTop: '20px' }}>With your sentence: {text}. We have accuracy with: {(Number(data[0][1].percent)*100)+'%'}</p>
-              <p style={{ marginTop: '20px' }}>
-                {' '}
+              <p>Description: {formatString(item['description'])}</p>
+              <p>With your sentence: { data[2].sentence }. We have accuracy with: {(Number(data[0][0].percent)*100).toFixed(2)+'%'}</p>
+              <p>
                 - Cording to this interpretation, the given statement seems to
                 be <span className={data[0][1].desition ? 'txt-green' : 'txt-red'}>{ data[0][1].desition.toString() }</span>
               </p>
+              <div className='content__btn-link'>
+                <a className='btn-link--modifile' href={ item['link'] }>Read more</a>
+              </div>
             </div>
           </div>
         ));

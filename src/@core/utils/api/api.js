@@ -25,6 +25,8 @@ export const search = async (text, number) => {
         }
         var contextData = formatDataSearch(result.array[0][0]);
         data.push(trackingData,contextData);
+        data.push({sentence: text});
+        console.log(data);
         return resolve(data);
       });
     } catch (error) {

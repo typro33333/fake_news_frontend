@@ -18,7 +18,11 @@ export const search = async (text, number) => {
         var data = [];
         var trackingData = [];
         trackingData.push({percent: result.array[0][1]});
-        trackingData.push({desition: result.array[0][2]});
+        if (result.array[0][2] === undefined) {
+          trackingData.push({desition: false});
+        }else {
+          trackingData.push({desition: result.array[0][2]});
+        }
         var contextData = formatDataSearch(result.array[0][0]);
         data.push(trackingData,contextData);
         return resolve(data);

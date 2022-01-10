@@ -8,7 +8,7 @@ export default class Search extends React.Component {
     super(props);
     this.state = {
       text: '',
-      number: 3,
+      number: 4,
       data: [],
       percent: 0,
       tracking: false,
@@ -25,13 +25,13 @@ export default class Search extends React.Component {
           </div>
         );
       } else if (data.length > 0) {
-        console.log(data);
+        console.log(data[0][1].desition );
         const map = data[1].map((item, index) => (
           <div key={index} className="box-card">
             <div className="content-result">
-              <p className="highlight-color title-content">
+              <h3 className="highlight-color">
                 Interpretation {index + 1}
-              </p>
+              </h3>
               <p style={{ marginTop: '20px' }}>
                 <span className="txt-title-card-result">
                   Title: {item['title']}
@@ -42,18 +42,12 @@ export default class Search extends React.Component {
                 <span className="txt-time-search">Time: {item['publish_time']}</span>
               </p>
               <p style={{ marginTop: '20px' }}>Description: {formatString(item['description'])}</p>
+              <p style={{ marginTop: '20px' }}>With your sentence: {text}. We have accuracy with: {(Number(data[0][1].percent)*100)+'%'}</p>
               <p style={{ marginTop: '20px' }}>
                 {' '}
                 - Cording to this interpretation, the given statement seems to
-                be <span className={this.state.tracking ? 'txt-green' : 'txt-red'}>{this.state.tracking}</span>
+                be <span className={data[0][1].desition ? 'txt-green' : 'txt-red'}>{ data[0][1].desition.toString() }</span>
               </p>
-              <p style={{ marginTop: '20px' }}>Query: {text}</p>
-              <button
-                className="btn-readmore-search"
-                style={{ marginTop: '20px', marginBottom: '20px' }}
-              >
-                More Detail
-              </button>
             </div>
           </div>
         ));

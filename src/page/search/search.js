@@ -3,6 +3,7 @@ import './search.css';
 import { search } from '@core/utils/api/api';
 import { Space40, Space60, Space120 } from '@core/components/atom/space/space';
 import { formatString } from '@core/utils/modules/modules';
+import { Spinner } from 'react-bootstrap';
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -12,29 +13,32 @@ export default class Search extends React.Component {
       data: [],
       percent: 0,
       tracking: false,
+      isSearch: false,
+      disable: true,
+      error: false,
     };
   }
 
   render() {
-    const { text, number, data } = this.state;
+    const { text, number, data, isSearch, disable } = this.state;
     const listItem = (data) => {
       if (data.length === 0) {
         return (
-          <div className="no_result">
-            No have result, please start your search!
+          <div className='no_result'>
+            <p className='highlight-color'>No have result, please start your search!</p>
           </div>
         );
       } else if (data.length > 0) {
         const map = data[1].map((item, index) => (
-          <div key={index} className="box-card">
+          <div key={index} className='box-card'>
             <div className='box-card__content'>
-              <h3 className="highlight-color">
+              <h3 className='highlight-color'>
                 Interpretation {index + 1}
               </h3>
-              <p> <span className="txt-title-card-result"> Title: {item['title']} </span>
+              <p> <span className='txt-title-card-result'> Title: {item['title']} </span>
               </p>
               <p style={{ marginTop: '8px' }}>
-                <span className="txt-time-search">Time: {item['publish_time']}</span>
+                <span className='txt-time-search'>Time: {item['publish_time']}</span>
               </p>
               <p>Description: {formatString(item['description'])}</p>
               <p>With your sentence: { data[2].sentence }. We have accuracy with: {(Number(data[0][0].percent)*100).toFixed(2)+'%'}</p>
@@ -55,49 +59,72 @@ export default class Search extends React.Component {
 
     return (
       <div>
-        <div className="search__title">
+        <div className='search__title'>
           <div className='title__layout'>
-            <h1 className="highlight-color">Information Tracking Covid-19 </h1>
+            <h1 className='highlight-color'>Information Tracking Covid-19 </h1>
             <h3 className='layout__sub-title'> Computational Fact Checking for Statistical
-              <span className="highlight-color"> Covid-19 </span>Claims
+              <span className='highlight-color'> Covid-19 </span>Claims
             </h3>
           </div>
         </div>
-        <div className="search__description">
+        <div className='search__description'>
           <p className='description__layout'>
           Verify statistical claims about the coronavirus spread and effects on
           data from the <span className='description--modifile'>official sources</span>.
           </p>
         </div>
         <Space40></Space40>
-        <div className="search">
+        <div className= 'search'>
           <div className='search__layout'>
             <input
-              className="input-search"
-              placeholder="Sentence about covid-19"
+              className='input-search'
+              placeholder='Sentence about covid-19'
               onChange={async (event) => {
                 await this.setState({ text: event.target.value });
+                if( text.length > 3 ) {
+                  await this.setState({ disable: false });
+                } else {
+                  this.setState({ disable: true });
+                }
               }}
             />
-            <div
-              className="btn-search"
+            <button
+              className= 'btn-search'
+              disabled = { disable }
               onClick={async() => {
+                if( text.length === 0 ) {
+                  this.setState({error: true});
+                  return;
+                }
+                this.setState({ isSearch: true });
                 await search(text, number).then(async res => {
                   await this.setState({ data: res});
+                  this.setState({ isSearch: false });
+                  this.setState({ disable: true });
+                  this.setState({ text: '' });
                 });
               }}
             >
-              <p className="txt-search">Tracking</p>
-            </div>
+              <div className='btn-search__layout'>
+                <div className='txt-search'>Tracking</div>
+                {isSearch?
+                  <Spinner animation='border' role='status' size='sm' variant='light' className='spinner-custom'>
+                    <span className='visually-hidden'>Loading...</span>
+                  </Spinner>
+                  :
+                  <div></div>
+                }
+              </div>
+            </button>
           </div>
         </div>
         <Space60></Space60>
-        <div className="title-result">
-          <h5 className="txt-result">
+        <div className='title-result'>
+          <h5 className='txt-result'>
             There are multiple possible interpretations for this claim
           </h5>
           <Space40></Space40>
-          <div className="layout-card">{listItem(data)}</div>
+          <div className='layout-card'>{listItem(data)}</div>
         </div>
         <Space120></Space120>
       </div>

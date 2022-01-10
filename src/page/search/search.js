@@ -47,7 +47,7 @@ export default class Search extends React.Component {
                 be <span className={data[0][1].desition ? 'txt-green' : 'txt-red'}>{ data[0][1].desition.toString() }</span>
               </p>
               <div className='content__btn-link'>
-                <a className='btn-link--modifile' href={ item['link'] }>Read more</a>
+                <a className='btn-link--modifile' href={ `${item['link']}` }>Read more</a>
               </div>
             </div>
           </div>
@@ -78,6 +78,7 @@ export default class Search extends React.Component {
           <div className='search__layout'>
             <input
               className='input-search'
+              id='input-search'
               placeholder='Sentence about covid-19'
               onChange={async (event) => {
                 await this.setState({ text: event.target.value });
@@ -99,9 +100,10 @@ export default class Search extends React.Component {
                 this.setState({ isSearch: true });
                 await search(text, number).then(async res => {
                   await this.setState({ data: res});
-                  this.setState({ isSearch: false });
-                  this.setState({ disable: true });
-                  this.setState({ text: '' });
+                  await this.setState({ isSearch: false });
+                  await this.setState({ disable: true });
+                  await this.setState({ text: '' });
+                  document.getElementById('input-search').value = '';
                 });
               }}
             >

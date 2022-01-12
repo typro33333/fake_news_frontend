@@ -6,7 +6,7 @@ const metadata = { 'custom-header-1': 'SearchResult' };
 
 export const search = async (text, number) => {
   return await new Promise((resolve, reject) => {
-    var client = new SearchClient('http://backend.ttst.asia');
+    var client = new SearchClient('http://backend.ttst.asia:8080');
     var req = new Data();
     req.setMessage(text);
     req.setResultNumber(number);

@@ -24,7 +24,7 @@ export default class Search extends React.Component {
   }
 
   render() {
-    const { text, number, data, isSearch, disable } = this.state;
+    const { text, number, data, isSearch, disable, error } = this.state;
     const listItem = (data) => {
       if (data.length === 0) {
         return (
@@ -103,6 +103,11 @@ export default class Search extends React.Component {
                 }
                 this.setState({ isSearch: true });
                 await search(text, number).then(async res => {
+                  if(!res) {
+                    this.setState({ error: true });
+                    this.setState({ isSearch: false });
+                    return;
+                  }
                   await this.setState({ data: res});
                   await this.setState({ isSearch: false });
                   await this.setState({ disable: true });
@@ -123,6 +128,7 @@ export default class Search extends React.Component {
               </div>
             </button>
           </div>
+          {error? <div className='search__error'><i className='bx bx-error'></i> Request server error. Please try again!</div> : <div style={{marginTop:'16px'}}></div>}
         </div>
         <Space60></Space60>
         <div className='title-result'>

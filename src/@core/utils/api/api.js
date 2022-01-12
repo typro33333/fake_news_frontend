@@ -6,14 +6,14 @@ const metadata = { 'custom-header-1': 'SearchResult' };
 
 export const search = async (text, number) => {
   return await new Promise((resolve, reject) => {
-    var client = new SearchClient('http://0.0.0.0:8080');
+    var client = new SearchClient('http://backend.ttst.asia');
     var req = new Data();
     req.setMessage(text);
     req.setResultNumber(number);
     try {
       client.search(req, metadata, (error, result) => {
         if (error) {
-          return 0;
+          resolve(false);
         }
         var data = [];
         var trackingData = [];

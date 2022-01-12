@@ -64,10 +64,6 @@
     align-items: center;
 }
 
-.btn-search__layout > Spiner{
-
-}
-
 .btn-search{
     display: flex;
     justify-content: center;
@@ -147,10 +143,6 @@
     margin: 0;
 }
 
-.content__btn-link {
-
-}
-
 .btn-link--modifile {
     display: block;
     width: 100%;
@@ -163,6 +155,14 @@
     font-weight: bold;
     line-height: 25px;
     text-decoration: none;
+}
+
+.search__error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    height: 42px;
 }
 
 .spinner-border-sm {
@@ -197,6 +197,9 @@
 }
 
 @media only screen and (max-width: 1920px) {
+    .search {
+        flex-direction: column;
+    }
 
     .search__layout {
         width: 53%;

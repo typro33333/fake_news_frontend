@@ -1,5 +1,7 @@
 import React from 'react';
 import './search.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { search } from '@core/utils/api/api';
 import { Space40, Space60, Space120 } from '@core/components/atom/space/space';
 import { formatString } from '@core/utils/modules/modules';
@@ -20,6 +22,9 @@ export default class Search extends React.Component {
   }
 
   componentDidMount () {
+    AOS.init({
+      once: true
+    });
     document.title = 'AICIT-19 | Search';
   }
 
@@ -63,7 +68,11 @@ export default class Search extends React.Component {
 
     return (
       <div>
-        <div className='search__title'>
+        <div
+          data-aos='fade-up'
+          data-aos-easing='ease-in-sine'
+          data-aos-duration='600'
+          className='search__title'>
           <div className='title__layout'>
             <h1 className='highlight-color'>Information Tracking Covid-19 </h1>
             <h3 className='layout__sub-title'> Computational Fact Checking for Statistical
@@ -71,14 +80,23 @@ export default class Search extends React.Component {
             </h3>
           </div>
         </div>
-        <div className='search__description'>
+        <div
+          data-aos='fade-up'
+          data-aos-easing='ease-in-sine'
+          data-aos-duration='600'
+          className='search__description'>
           <p className='description__layout'>
           Verify statistical claims about the coronavirus spread and effects on
           data from the <span className='description--modifile'>official sources</span>.
           </p>
         </div>
         <Space40></Space40>
-        <div className= 'search'>
+        <div
+          data-aos='fade-right'
+          data-aos-easing='ease-in-sine'
+          data-aos-duration='600'
+          data-aos-delay='600'
+          className= 'search'>
           <div className='search__layout'>
             <input
               className='input-search'
@@ -131,7 +149,12 @@ export default class Search extends React.Component {
           {error? <div className='search__error'><i className='bx bx-error'></i> Request server error. Please try again!</div> : <div style={{marginTop:'16px'}}></div>}
         </div>
         <Space60></Space60>
-        <div className='title-result'>
+        <div
+          data-aos='fade-up'
+          data-aos-easing='ease-in-sine'
+          data-aos-duration='600'
+          data-aos-delay='1200'
+          className='title-result'>
           <h5 className='txt-result'>
             There are multiple possible interpretations for this claim
           </h5>

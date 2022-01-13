@@ -2,8 +2,6 @@ const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin'); //Đóng gói file html
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin'); // Phân biệt file viết hoa
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //Đóng gói file css
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const {BundleAnalyzerPlugin} =require('webpack-bundle-analyzer'); //Sau khi bundle sẽ hiển thị thống kê file (mb)
 const CompressionPlugin = require('compression-webpack-plugin');
 const TesterPlugin = require('terser-webpack-plugin');
 
@@ -81,16 +79,6 @@ module.exports = {
     }),
     new CaseSensitivePathsPlugin(),
     new MiniCssExtractPlugin(),
-    new CompressionPlugin(),
-    // {
-    //   apply: (compiler) => {
-    //     compiler.hooks.done.tap('DonePlugin', (stats) => {
-    //       console.log('Build complete !', stats);
-    //       setTimeout(() => {
-    //         process.exit(0);
-    //       });
-    //     });
-    //   }
-    // }
+    new CompressionPlugin()
   ],
 };

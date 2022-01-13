@@ -78,6 +78,7 @@ module.exports = {
   plugins: [
     new HtmlPlugin({
       template: 'index.html',
+      favicon: 'favicon.ico'
     }),
     new CaseSensitivePathsPlugin(),
     new MiniCssExtractPlugin(),

@@ -50,7 +50,7 @@ export default class Search extends React.Component {
                 <span className='txt-time-search'>Time: {item['publish_time']}</span>
               </p>
               <p>Description: {formatString(item['description'])}</p>
-              <p>With your sentence: { data[2].sentence }. We have accuracy with: {(Number(data[0][0].percent)*100).toFixed(2)+'%'}</p>
+              <p>With your sentence: { data[2].sentence }. We have accuracy with: {(Number(data[0][0].percent)*100).toFixed(5)+'%'}</p>
               <p>
                 - Cording to this interpretation, the given statement seems to
                 be <span className={data[0][1].desition ? 'txt-green' : 'txt-red'}>{ data[0][1].desition.toString() }</span>

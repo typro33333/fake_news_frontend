@@ -200,9 +200,34 @@
     background-color: rgb(234, 51, 35);
 }
 
+.search__result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%
+}
+
+.result {
+    width: 70%;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 1px 1px 8px rgb(173, 173, 173);
+}
+
+.sentence--modifile {
+    background-color: #fbecb7;
+    border-radius: 4px;
+}
+
 @media only screen and (max-width: 1920px) {
     .search {
         flex-direction: column;
+    }
+
+    .result {
+        width: 53%;
+        margin-top: 8px;
     }
 
     .search__layout {
@@ -225,6 +250,11 @@
 
 @media only screen and (max-width: 1440px) {
 
+    .result {
+        width: 60%;
+        margin-top: 8px;
+    }
+
     .search__layout {
         width: 60%;
     }
@@ -244,6 +274,11 @@
 }
 
 @media only screen and (max-width: 1024px) {
+
+    .result {
+        width: 65%;
+        margin-top: 8px;
+    }
 
     .search__layout {
         width: 65%;
@@ -288,6 +323,11 @@
 }
 
 @media only screen and (max-width: 425px) {
+
+    .result {
+        width: 70%;
+    }
+
     .layout__sub-title {
         display: none;
     }
